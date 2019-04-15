@@ -1,0 +1,5 @@
+C:/Users/weisea3/Desktop/GameArch/FinalProject/GameArchFinalProject/Example-Scripting-master/build/ga-demo-scripting/CMakeFiles/ALWAYS_COPY_DATA.dir
+C:/Users/weisea3/Desktop/GameArch/FinalProject/GameArchFinalProject/Example-Scripting-master/build/ga-demo-scripting/CMakeFiles/ga.dir
+C:/Users/weisea3/Desktop/GameArch/FinalProject/GameArchFinalProject/Example-Scripting-master/build/ga-demo-scripting/CMakeFiles/lua53.dir
+C:/Users/weisea3/Desktop/GameArch/FinalProject/GameArchFinalProject/Example-Scripting-master/build/ga-demo-scripting/CMakeFiles/ALL_BUILD.dir
+C:/Users/weisea3/Desktop/GameArch/FinalProject/GameArchFinalProject/Example-Scripting-master/build/ga-demo-scripting/CMakeFiles/ZERO_CHECK.dir
