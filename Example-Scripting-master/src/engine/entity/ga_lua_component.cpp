@@ -18,6 +18,11 @@
 #include <iostream>
 #include <string>
 
+int _current_number;
+int _tick;
+int _upperBound = 120;
+int _lowerBound = 0;
+
 ga_lua_component::ga_lua_component(ga_entity* ent, const char* path) : ga_component(ent)
 {
 	// Create a new Lua state. The Lua library has no global variables,
@@ -60,7 +65,8 @@ ga_lua_component::ga_lua_component(ga_entity* ent, const char* path) : ga_compon
 		_lua = nullptr;
 		return;
 	}
-
+	_current_number = 60;
+	_tick = 0;
 	// We were just checking to see if "update" existed. We don't want to execute
 	// it right now.
 	lua_pop(_lua, 1);
@@ -70,6 +76,8 @@ ga_lua_component::ga_lua_component(ga_entity* ent, const char* path) : ga_compon
 	lua_register(_lua, "frame_params_get_input_right", lua_frame_params_get_input_right);
 	lua_register(_lua, "component_get_entity", lua_component_get_entity);
 	lua_register(_lua, "entity_translate", lua_entity_translate);
+
+	lua_register(_lua, "return_sound_value", return_sound_value);
 }
 
 ga_lua_component::~ga_lua_component()
@@ -82,7 +90,8 @@ ga_lua_component::~ga_lua_component()
 
 void ga_lua_component::update(ga_frame_params* params)
 {
-	if (_lua)
+	//printf("Current number is %d", _current_number);
+	if (_lua && _tick % 5 == 0)
 	{
 		// Call the Lua script's update function. We put the function
 		// on the stack, then the arguments in order (push the first 
@@ -92,15 +101,21 @@ void ga_lua_component::update(ga_frame_params* params)
 		lua_getglobal(_lua, "update");
 		// Lua has many push functions (boolean, string, etc.)
 		// lua_pushlightdata is for pointers
+		
 		lua_pushlightuserdata(_lua, this);
 		lua_pushlightuserdata(_lua, params);
-		int status = lua_pcall(_lua, 2, 0, 0);
+		lua_pushinteger(_lua, _current_number);
+		int status = lua_pcall(_lua, 3, 0, 0);
 		if (status)
 		{
 			std::cerr << "Error: " << lua_tostring(_lua, -1);
 			assert(0);
 		}
+		printf("%d\n", _current_number);
 	}
+	_tick++;
+
+	//Collect all inputs from all clients
 }
 
 int ga_lua_component::lua_frame_params_get_input_left(lua_State* state)
@@ -169,3 +184,24 @@ int ga_lua_component::lua_entity_translate(lua_State* state)
 	}
 	return 0;
 }
+
+int ga_lua_component::return_sound_value(lua_State* state)
+{
+	int arg_count = lua_gettop(state);
+	if (arg_count == 2)
+	{
+		ga_entity* ent = (ga_entity*)lua_touserdata(state, 1);
+		int musicResult = (int)lua_tonumber(state, 2);
+		if (musicResult > _upperBound)
+			musicResult = 120;
+		else if (musicResult < _lowerBound)
+			musicResult = 0;
+		_current_number = musicResult;
+	}
+	return 0;
+}
+
+//int ga_lua_component::get_current_value(lua_State* state)
+//{
+
+//}

@@ -86,7 +86,7 @@ int main(int argc, const char** argv)
 	sim->add_entity(&ground);
 
 	ga_cube_component cube_mesh(&cube, "data/textures/magic.png");
-	ga_lua_component lua_move(&cube, "data/scripts/move.lua");
+	ga_lua_component lua_move(&cube, "data/scripts/test_script.lua");
 	sim->add_entity(&cube);
 	cube.set_active(true);
 

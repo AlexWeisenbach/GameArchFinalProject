@@ -1,0 +1,40 @@
+﻿  Building Custom Rule C:/Users/weisea3/Desktop/GameArch/FinalProject/GameArchFinalProject/Example-Scripting-master/src/engine/CMakeLists.txt
+  CMake does not need to re-run because C:/Users/weisea3/Desktop/GameArch/FinalProject/GameArchFinalProject/Example-Scripting-master/build/ga-demo-scripting/CMakeFiles/generate.stamp is up-to-date.
+  lapi.c
+  lauxlib.c
+  lbaselib.c
+  lbitlib.c
+  lcode.c
+  lcorolib.c
+  lctype.c
+  ldblib.c
+  ldebug.c
+  ldo.c
+  ldump.c
+  lfunc.c
+  lgc.c
+  linit.c
+  liolib.c
+  llex.c
+  lmathlib.c
+  lmem.c
+  loadlib.c
+  lobject.c
+  Generating Code...
+  Compiling...
+  lopcodes.c
+  loslib.c
+  lparser.c
+  lstate.c
+  lstring.c
+  lstrlib.c
+  ltable.c
+  ltablib.c
+  ltm.c
+  lua.c
+  lundump.c
+  lutf8lib.c
+  lvm.c
+  lzio.c
+  Generating Code...
+  lua53.vcxproj -> C:\Users\weisea3\Desktop\GameArch\FinalProject\GameArchFinalProject\Example-Scripting-master\build\ga-demo-scripting\Debug\lua53.lib

@@ -28,5 +28,9 @@ private:
 	static int lua_component_get_entity(struct lua_State* state);
 	static int lua_entity_translate(struct lua_State* state);
 
+	static int return_sound_value(struct lua_State* state);
+	//static int get_current_value(struct lua_State* state);
+
 	struct lua_State* _lua;
+	
 };
