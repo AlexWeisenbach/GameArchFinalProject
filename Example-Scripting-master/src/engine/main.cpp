@@ -21,6 +21,7 @@ working devel version
 #include "graphics/ga_cube_component.h"
 #include "graphics/ga_model_component.h"
 #include "graphics/ga_program.h"
+#include "../../3rdparty/libpd/cpp/PdBase.hpp"
 
 #include "gui/ga_font.h"
 #include "gui/ga_button.h"
@@ -58,6 +59,8 @@ ga_entity model;
 ga_entity model2;
 ga_entity bendybar;
 ga_entity ground;
+
+using namespace pd;
 
 int main(int argc, const char** argv)
 {
@@ -133,6 +136,8 @@ int main(int argc, const char** argv)
 	delete sim;
 	delete input;
 	delete camera;
+
+	PdBase pd;
 
 	ga_job::shutdown();
 
